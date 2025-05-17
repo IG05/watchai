@@ -1,0 +1,23 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+  }
+}
+
+/* Hide scrollbars globally but keep scrolling enabled */
+html, body {
+  overflow-y: scroll;           /* Always enable vertical scroll to avoid layout shift */
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;                /* Chrome, Safari, Opera */
+}
