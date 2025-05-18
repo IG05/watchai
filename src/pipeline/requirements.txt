@@ -1,0 +1,14 @@
+torch
+torchaudio
+transformers
+sentence-transformers
+openai-whisper
+librosa
+opencv-python
+Pillow
+faiss-cpu
+firebase-admin
+google-cloud-firestore
+scikit-learn
+tqdm
+numpy
