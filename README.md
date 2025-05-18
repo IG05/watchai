@@ -150,6 +150,13 @@ cd pipeline
 python3 scripts/full_model.py 
 ```
 
+#### ✅ Run `build_faiss_index.py` – Generate Faiss Index for Similarity and Recommendation
+
+```bash
+cd pipeline
+python3 scripts/.py build_faiss_inex.py
+```
+
 > Executes full processing pipeline and updates Firestore with metadata and embedding vectors.
 
 ---
