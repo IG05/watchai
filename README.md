@@ -7,7 +7,7 @@
 ## 🚀 Features
 
 - 🔐 Firebase Authentication (Email/Password)
-- 🎬 Video Upload and Playback (Self-hosted)
+- 🎬 Video Upload and Playback 
 - 🧠 Multimodal AI Embeddings:
   - 📄 Text via Whisper + SentenceTransformer
   - 🖼️ Visuals via CLIP
@@ -35,17 +35,44 @@
 
 ```
 watchai/
-├── app/                    # Next.js routes (upload, watch, home, etc.)
-├── components/             # UI components
-├── context/                # Firebase Auth context
-├── services/               # Business logic for Firebase, video history, etc.
-├── pipeline/
-│   ├── firebase/           # Firebase credentials
-│   └── scripts/
-│       ├── extract.py      # Metadata + embedding extraction script
-│       └── full_model.py   # Full pipeline model orchestration
-├── public/                 # Static assets
-└── ...
+├── app/                                # Next.js route-based pages
+│   ├── api/                            # API routes (optional backend logic)
+│   ├── auth/                           # Login and Register pages
+│   ├── home/                           # Personalized home feed
+│   ├── onboarding/                     # Category preference setup
+│   ├── upload/                         # Video upload interface
+│   ├── watch/                          # Watch page with video + recommendations
+│   ├── watch-history/                  # User watch history page
+│   ├── changepref/                     # Update preferences
+│   └── layout.tsx / page.tsx          # Global layout and root page
+│
+├── context/
+│   └── AuthContext.tsx                 # Firebase Auth wrapper
+│
+├── services/                           # Business logic / Firebase interactions
+│   ├── firebase.ts                     # Firebase client setup
+│
+├── pipeline/                           # Python backend pipeline
+│   ├── firebase/
+│   │   └── firebase-credentials.json   # Firebase admin credentials
+│   ├── data/
+│   │   ├── processed_videos/          # Final processed outputs
+
+│   ├── scripts/
+│   │   ├── extract.py                  # Metadata extraction
+│   │   └── full_model.py              # Complete pipeline orchestration
+│   └── requirements.txt               # Python dependencies
+│
+├── styles/
+│   └── globals.css                     # Tailwind and global CSS
+│
+├── .env.local                          # Firebase environment variables
+├── next.config.js                      # Next.js config
+├── package.json                        # NPM package definitions
+├── tsconfig.json                       # TypeScript config
+├── README.md                           # Project overview
+└── .gitignore                          # Git ignored files
+
 ```
 
 ---
@@ -55,8 +82,8 @@ watchai/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/watchwithai.git
-cd watchwithai
+git clone https://github.com/your-username/watchai.git
+cd watchai
 ```
 
 ### 2. Install Frontend Dependencies
@@ -69,8 +96,6 @@ npm install
 
 ```bash
 cd pipeline/
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -109,11 +134,11 @@ npm run dev
 
 ### Backend Pipeline Scripts
 
-#### ✅ Run `extract.py` – Extract metadata & embeddings for a video
+#### ✅ Run `extract.py` – Extract metadata & embeddings for videos [in XML file]
 
 ```bash
-cd pipeline/scripts
-python extract.py --video_path "C:/Users/ishaa/watchai/pipeline/data/uploaded_videos/video.mp4"
+cd pipeline
+python3 python3 scripts/extract.py   
 ```
 
 > Outputs transcript, summary, thumbnails, audio features, CLIP & text embeddings. Saves data to Firebase.
@@ -121,8 +146,8 @@ python extract.py --video_path "C:/Users/ishaa/watchai/pipeline/data/uploaded_vi
 #### ✅ Run `full_model.py` – Orchestrate full pipeline + store in Firebase
 
 ```bash
-cd pipeline/scripts
-python full_model.py --video_path "C:/Users/ishaa/watchai/pipeline/data/uploaded_videos/video.mp4"
+cd pipeline
+python3 scripts/full_model.py 
 ```
 
 > Executes full processing pipeline and updates Firestore with metadata and embedding vectors.
@@ -131,9 +156,9 @@ python full_model.py --video_path "C:/Users/ishaa/watchai/pipeline/data/uploaded
 
 ## 🧠 How It Works
 
-1. 📤 User uploads a video via the UI.
+1. 📤 Video Extracted from XML file
 2. 🧾 `extract.py` runs transcription, summarization, feature extraction.
-3. 🧠 `full_model.py` calls `extract.py`, computes embeddings, updates Firestore.
+3. 🧠 `full_model.py` computes embeddings, updates Firestore.
 4. 🔁 FAISS indexes embeddings for fast similarity-based recommendations.
 5. 🏠 Home feed shows personalized or trending videos.
 
@@ -145,6 +170,7 @@ python full_model.py --video_path "C:/Users/ishaa/watchai/pipeline/data/uploaded
 - 🌐 Public Video Sharing & Comments
 - 🤖 LLM-powered Question Answering from Videos
 - ⏳ Streaming Video Transcription
+- 🤖 Recommendation on Custom VIdeo Dataset
 
 ---
 
@@ -155,18 +181,8 @@ Please fork the repo, create a feature branch, and open a pull request with deta
 
 ---
 
-## 📜 License
-
-MIT License © 2025 [Ishaan Goyal](https://github.com/your-username)
-
----
-
 ## 📬 Contact
 
-📧 ishaan.goyal@example.com  
-🔗 [LinkedIn](https://www.linkedin.com/in/your-link)  
-💡 Ideas or issues? Open one [here](https://github.com/your-username/watchwithai/issues)
+📧 ishaangoyal0610@gmail.com
+🔗 [LinkedIn]([https://www.linkedin.com/in/your-link](https://www.linkedin.com/in/ishaan-goyal10/))  
 
----
-
-> ⚡ Built with passion using AI + Firebase + React
