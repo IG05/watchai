@@ -1,6 +1,5 @@
 // app/layout.tsx
 import './globals.css';
-import { ReactNode } from 'react';
 import { Metadata } from 'next';
 import { Header } from '@/components/ui/header';  // You will create this next
 import { AuthProvider } from '@/context/AuthContext';
