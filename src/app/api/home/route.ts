@@ -9,8 +9,14 @@ import {
   getDocs,
   limit,
 } from "firebase/firestore";
+import { NextResponse } from "next/server";
 
-export async function getHomePageVideos() {
+export async function GET() {
+  const videos = await getHomePageVideos();
+  return NextResponse.json(videos);
+}
+
+async function getHomePageVideos() {
   const auth = getAuth();
   const user = auth.currentUser;
   if (!user) return [];
