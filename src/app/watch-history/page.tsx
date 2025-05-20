@@ -7,6 +7,7 @@ import { db } from "@/services/firebase";
 import { Trash2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { LogIn, History,LoaderCircle } from "lucide-react";
+import Image from "next/image";
 
 type WatchedVideoEntry = {
   videoId: string;
@@ -113,7 +114,7 @@ if (loading) {
       className="flex flex-col items-center justify-center text-center mt-20 text-gray-600"
     >
       <LogIn className="w-16 h-16 text-gray-400 mb-4" />
-      <h2 className="text-2xl font-semibold">You're Not Logged In</h2>
+      <h2 className="text-2xl font-semibold">You&apos;re Not Logged In</h2>
       <p className="mt-2 mb-6 text-gray-500">
         Please log in to view and manage your watch history.
       </p>
@@ -137,7 +138,7 @@ if (loading) {
     >
       <History className="w-16 h-16 text-gray-400 mb-4" />
       <h2 className="text-2xl font-semibold">No Watch History</h2>
-      <p className="mt-2 mb-6 text-gray-500">Looks like you haven’t watched anything yet.</p>
+      <p className="mt-2 mb-6 text-gray-500">Looks like you haven&quot;t watched anything yet.</p>
       <a
         href="/home"
         className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
@@ -179,7 +180,7 @@ if (loading) {
             className="flex flex-col sm:flex-row gap-4 border rounded-lg p-4 shadow hover:shadow-lg transition-shadow bg-white"
           >
             <a href={`/watch/${video.videoId}`} className="sm:w-60 w-full flex-shrink-0">
-              <img
+              <Image
                 src={video.thumbnailUrl}
                 alt={video.title}
                 className="w-full h-auto rounded-lg object-cover"
