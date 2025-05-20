@@ -98,7 +98,7 @@ export default function HomePage() {
         <p className="text-lg mb-6 max-w-xl mx-auto">
           Sign up and experience a new way to watch videos — more tailored, more intelligent, more YOU.
         </p>
-        <Link href="/auth/register">
+        <Link href="/home">
           <PrimaryButton className="bg-yellow-500 text-black hover:bg-yellow-500 text-lg px-6 py-3 rounded-xl shadow-lg">
             Get Started
           </PrimaryButton>
