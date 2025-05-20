@@ -7,7 +7,6 @@ import { db } from "@/services/firebase";
 import { Trash2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { LogIn, History,LoaderCircle } from "lucide-react";
-import Image from "next/image";
 
 type WatchedVideoEntry = {
   videoId: string;
@@ -180,7 +179,7 @@ if (loading) {
             className="flex flex-col sm:flex-row gap-4 border rounded-lg p-4 shadow hover:shadow-lg transition-shadow bg-white"
           >
             <a href={`/watch/${video.videoId}`} className="sm:w-60 w-full flex-shrink-0">
-              <Image
+              <img
                 src={video.thumbnailUrl}
                 alt={video.title}
                 className="w-full h-auto rounded-lg object-cover"
