@@ -1,6 +1,6 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/services/firebase";
-import WatchPage from "@/app/watch/WatchPage";
+import WatchPage from "@/app/WatchPage/page";
 
 interface PageProps {
   params: {
