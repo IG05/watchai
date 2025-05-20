@@ -6,9 +6,8 @@ type Props = {
   params: { videoId: string };
 };
 
-export default async function Watch({ params }: Props) {
-  const awaitedParams = await params;  // await params first
-  const { videoId } = awaitedParams;
+export default async function Watch({ params }: Props) {  // await params first
+  const { videoId } = params;
 
   const docRef = doc(db, "videos", videoId);
   const snap = await getDoc(docRef);
