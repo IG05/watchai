@@ -20,9 +20,13 @@ export default function RegisterPage() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: username });
       router.push('/onboarding');
-    } catch (error: any) {
-      alert(error.message);
-    }
+    }  catch (error: unknown) {
+  if (error instanceof Error) {
+    alert(error.message);
+  } else {
+    alert('An unexpected error occurred');
+  }
+}
   };
 
   const handleGoogleLogin = async () => {
@@ -32,9 +36,13 @@ export default function RegisterPage() {
       const isNewUser = getAdditionalUserInfo(result)?.isNewUser;
 
       router.push(isNewUser ? '/onboarding' : '/home');
-    } catch (error: any) {
-      alert(error.message);
-    }
+    }  catch (error: unknown) {
+  if (error instanceof Error) {
+    alert(error.message);
+  } else {
+    alert('An unexpected error occurred');
+  }
+}
   };
 
   return (
