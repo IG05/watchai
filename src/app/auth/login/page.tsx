@@ -18,9 +18,13 @@ export default function LoginPage() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push('/home');
-    } catch (error: any) {
-      alert(error.message);
-    }
+    }  catch (error: unknown) {
+  if (error instanceof Error) {
+    alert(error.message);
+  } else {
+    alert('An unexpected error occurred');
+  }
+}
   };
 
   const handleGoogleLogin = async () => {
@@ -30,9 +34,13 @@ export default function LoginPage() {
       const isNewUser = getAdditionalUserInfo(result)?.isNewUser;
 
       router.push(isNewUser ? '/onboarding' : '/home');
-    } catch (error: any) {
-      alert(error.message);
-    }
+    }  catch (error: unknown) {
+  if (error instanceof Error) {
+    alert(error.message);
+  } else {
+    alert('An unexpected error occurred');
+  }
+}
   };
 
   return (
@@ -94,7 +102,7 @@ export default function LoginPage() {
           </Button>
 
           <p className="text-center text-sm text-gray-600 mt-4">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/auth/register" className="text-blue-600 hover:underline font-medium">
               Sign up
             </Link>
