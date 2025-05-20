@@ -6,7 +6,6 @@ import { db } from "@/services/firebase";
 import { getAuth } from "firebase/auth";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoaderCircle } from "lucide-react";
-import Image from "next/image";
 
 
 
