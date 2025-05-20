@@ -7,7 +7,6 @@ import { doc, getDoc, collection, query, where, limit, getDocs } from "firebase/
 import { motion } from "framer-motion"
 import { LoaderCircle } from "lucide-react"
 import debounce from "lodash.debounce"
-import Image from "next/image"
 
 // Add this CSS to hide scrollbars
 const scrollbarHiddenStyles = `
@@ -357,7 +356,7 @@ export default function HomePage() {
                           damping: 20,
                         }}
                       >
-                        <Image
+                        <img
                           src={video.thumbnailUrl || "/placeholder.svg"}
                           alt={video.title}
                           className="w-full h-52 object-cover"
@@ -419,7 +418,7 @@ export default function HomePage() {
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    <Image
+                    <img
                       src={video.thumbnailUrl || "/placeholder.svg"}
                       alt={video.title}
                       className="w-full h-52 object-cover"
