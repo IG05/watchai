@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { LogOut, User, History, Home, LogIn, UserPlus, Settings, UploadIcon } from 'lucide-react';
 import { useState } from 'react';
-import { cn } from '@/lib/utils'; // Optional utility for merging classNames
 
 export const Header = () => {
   const { user, logout, loading } = useAuth();
