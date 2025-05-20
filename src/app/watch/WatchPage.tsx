@@ -7,6 +7,7 @@ import { db } from "@/services/firebase";
 import { getAuth } from "firebase/auth";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoaderCircle } from "lucide-react";
+import Image from "next/image";
 
 // === Types ===
 type RecommendationItem = {
@@ -156,7 +157,7 @@ export default function WatchPage({ videoId }: { videoId: string }) {
                         href={`/watch/${v.videoId}`}
                         className="flex-shrink-0 w-36 h-20 rounded-md overflow-hidden relative"
                       >
-                        <img
+                        <Image
                           src={v.thumbnailUrl}
                           alt={v.title}
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 rounded-md"
