@@ -1,12 +1,14 @@
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/services/firebase";
-import WatchPage from "@/app/watch/WatchPage"; // Adjust if you placed it elsewhere
+import WatchPage from "@/app/watch/WatchPage";
 
-type Props = {
-  params: { videoId: string };
-};
+interface PageProps {
+  params: {
+    videoId: string;
+  };
+}
 
-export default async function Watch({ params }: Props) {  // await params first
+export default async function Watch({ params }: PageProps) {
   const { videoId } = params;
 
   const docRef = doc(db, "videos", videoId);
