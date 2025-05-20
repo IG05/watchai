@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 
 interface PrimaryButtonProps {
   children: ReactNode;
-  [key: string]: any; // This allows you to pass any additional props, like className, etc.
+  [key: string]: unknown; // This allows you to pass any additional props, like className, etc.
 }
 
 export const PrimaryButton = ({ children, ...props }: PrimaryButtonProps) => (
