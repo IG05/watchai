@@ -1,12 +1,13 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getAuth, onAuthStateChanged } from "firebase/auth"
+import { getAuth, onAuthStateChanged ,User} from "firebase/auth"
 import { db } from "@/services/firebase"
 import { doc, getDoc, collection, query, where, limit, getDocs } from "firebase/firestore"
 import { motion } from "framer-motion"
 import { LoaderCircle } from "lucide-react"
 import debounce from "lodash.debounce"
+import Image from "next/image"
 
 // Add this CSS to hide scrollbars
 const scrollbarHiddenStyles = `
@@ -45,15 +46,20 @@ const cardVariants = {
   hover: { scale: 1.05, boxShadow: "0px 8px 15px rgba(0,0,0,0.15)" },
 }
 
+
+
 export default function HomePage() {
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [videos, setVideos] = useState<VideoData[]>([])
   const [videosByCategory, setVideosByCategory] = useState<{
     [category: string]: VideoData[]
   }>({})
+  
   const [videoType, setVideoType] = useState<VideoType>("")
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState("")
   const [showAllVideos, setShowAllVideos] = useState(false)
+  
 
   const fetchAllVideos = async (): Promise<VideoData[]> => {
     const snap = await getDocs(collection(db, "videos"))
@@ -204,7 +210,8 @@ export default function HomePage() {
 
   useEffect(() => {
     const auth = getAuth()
-    const unsubscribe = onAuthStateChanged(auth, () => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
       if (!showAllVideos) loadInitialVideos()
     })
     return () => unsubscribe()
@@ -254,15 +261,17 @@ export default function HomePage() {
           </svg>
         </div>
 
-        <button
-          onClick={handleToggle}
-          className={`inline-flex items-center rounded-full border-2 border-blue-600 px-5 py-2 text-sm font-semibold
+        {currentUser && (
+  <button
+    onClick={handleToggle}
+    className={`inline-flex items-center rounded-full border-2 border-blue-600 px-5 py-2 text-sm font-semibold
       text-blue-600 transition-colors duration-200
       hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-4 focus:ring-blue-300
       ${showAllVideos ? "bg-blue-600 text-white" : "bg-transparent text-blue-600"}`}
-        >
-          {showAllVideos ? "Show Personalized" : "Show All Videos"}
-        </button>
+  >
+    {showAllVideos ? "Show Personalized" : "Show All Videos"}
+  </button>
+)}
       </div>
 
       {loading ? (
@@ -290,7 +299,7 @@ export default function HomePage() {
           )}
 
           {videoType === "Search" && videos.length === 0 && (
-            <p className="text-gray-600 text-lg">No results found for "{searchQuery}"</p>
+            <p className="text-gray-600 text-lg">No results found for &quot;{searchQuery}&quot;</p>
           )}
 
           {videoType === "Trending" && !showAllVideos ? (
@@ -348,7 +357,7 @@ export default function HomePage() {
                           damping: 20,
                         }}
                       >
-                        <img
+                        <Image
                           src={video.thumbnailUrl || "/placeholder.svg"}
                           alt={video.title}
                           className="w-full h-52 object-cover"
@@ -410,7 +419,7 @@ export default function HomePage() {
                     whileTap={{ scale: 0.97 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    <img
+                    <Image
                       src={video.thumbnailUrl || "/placeholder.svg"}
                       alt={video.title}
                       className="w-full h-52 object-cover"
