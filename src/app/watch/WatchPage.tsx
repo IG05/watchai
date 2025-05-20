@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getSimilarVideos } from "@/app/api/recommendations/route";
 import { getDoc, doc, setDoc, arrayUnion } from "firebase/firestore";
 import { db } from "@/services/firebase";
 import { getAuth } from "firebase/auth";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoaderCircle } from "lucide-react";
 import Image from "next/image";
+
+
+
 
 // === Types ===
 type RecommendationItem = {
@@ -33,6 +35,8 @@ export default function WatchPage({ videoId }: { videoId: string }) {
 
   useEffect(() => {
     async function fetchVideoAndRecommendations() {
+      const res = await fetch(`/api/recommendations?videoId=${videoId}`);
+      const similarList: RecommendationItem[] = await res.json();
       setLoading(true);
       // 1. Fetch video info
       const vidSnap = await getDoc(doc(db, "videos", videoId));
@@ -44,7 +48,7 @@ export default function WatchPage({ videoId }: { videoId: string }) {
       setVideo(videoData);
 
       // 2. Fetch similar videos
-      const similarList: RecommendationItem[] = await getSimilarVideos(videoId);
+      // const similarList: RecommendationItem[] = await getSimilarVideos(videoId);
       const videos = await Promise.all(
         similarList.map(async (item) => {
           const recSnap = await getDoc(doc(db, "videos", item.videoId));
@@ -157,7 +161,7 @@ export default function WatchPage({ videoId }: { videoId: string }) {
                         href={`/watch/${v.videoId}`}
                         className="flex-shrink-0 w-36 h-20 rounded-md overflow-hidden relative"
                       >
-                        <Image
+                        <img
                           src={v.thumbnailUrl}
                           alt={v.title}
                           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105 rounded-md"
