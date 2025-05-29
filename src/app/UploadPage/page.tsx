@@ -96,7 +96,7 @@ export default function UploadPage() {
 
   const processVideo = async (url: string) => {
     const res = await fetch(
-      `http://localhost:7000/process-video?videoUrl=${encodeURIComponent(url)}`
+      `https://pipeline-916398640003.us-central1.run.app/process-video?videoUrl=${encodeURIComponent(url)}`
     );
 
     if (!res.ok) {
