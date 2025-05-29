@@ -56,9 +56,15 @@ export default function UploadPage() {
       setStatus("Processing video...");
 
       await processVideo(url);
-    } catch (err: any) {
-      setStatus("Error: " + err.message);
-    } finally {
+    } 
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        setStatus("Error: " + err.message);
+      } else {
+        setStatus("An unknown error occurred.");
+      }
+    }
+    finally {
       setUploading(false);
     }
   };
@@ -75,9 +81,15 @@ export default function UploadPage() {
 
     try {
       await processVideo(videoUrl.trim());
-    } catch (err: any) {
-      setStatus("Error: " + err.message);
-    } finally {
+    } 
+    catch (err: unknown) {
+      if (err instanceof Error) {
+        setStatus("Error: " + err.message);
+      } else {
+        setStatus("An unknown error occurred.");
+      }
+    } 
+    finally {
       setUploading(false);
     }
   };
