@@ -20,7 +20,7 @@ export async function fetchYouTubeVideoDetails(videoId: string) {
   };
 }
 export async function fetchVideoById(videoId: string) {
-  const API_KEY = process.env.YOUTUBE_API_KEY;
+  const API_KEY = "AIzaSyBfbctcBzh2-4v-1RFp4Levb6uP6y7TF38";
   const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${API_KEY}`;
 
   const res = await fetch(url);
