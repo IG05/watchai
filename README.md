@@ -174,54 +174,6 @@ OPENAI_API_KEY=your_openai_key (if using OpenAI models)
 
 ---
 
-## 🧪 API Endpoints
-
-### Video Analysis
-```bash
-POST /api/analyze
-Content-Type: application/json
-{
-  "video_url": "s3://bucket/video.mp4",
-  "user_id": "user123"
-}
-```
-
-### Get Recommendations
-```bash
-GET /api/recommendations?user_id=user123&limit=10
-```
-
-### User Profile
-```bash
-GET /api/profile?user_id=user123
-POST /api/profile/update
-```
-
----
-
-## 🛠️ Development
-
-### Running Tests
-```bash
-# Frontend tests
-npm test
-
-# Backend tests
-cd testing
-python -m pytest
-```
-
-### Building for Production
-```bash
-# Frontend build
-npm run build
-
-# Docker production build
-docker build -t watchai-prod --target production .
-```
-
----
-
 ## 🎯 Future Enhancements
 
 - 🎬 **Advanced Video Analytics**: Emotion detection and scene analysis
@@ -242,12 +194,6 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
