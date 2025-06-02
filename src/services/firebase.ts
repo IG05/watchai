@@ -3,7 +3,7 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCJRRW0FX-czi0SLtvxOjgdfar5fHDuZXk",
+  apiKey: process.env.YOUTUBE_API_KEY;
   authDomain: "watchai-74038.firebaseapp.com",
   projectId: "watchai-74038",
   storageBucket: "watchai-74038.firebasestorage.app",
