@@ -2,7 +2,7 @@
 
 **WatchAI** is an AI-powered video recommendation platform that leverages deep learning and behavioral insights to deliver personalized video discovery. Using multi-modal AI analysis, it goes beyond traditional tags to understand video content through computer vision, audio processing, and natural language understanding.
 
-🔗 **[Live Demo](https://watchai-ten.vercel.app/)** | 📱 **[Backend Pipeline](https://github.com/IG05/testing)**
+🔗 **[Live Demo](https://watchai-ten.vercel.app/)** | 📱 **[Backend Pipeline](https://github.com/IG05/watchAI-backend-pipeline)**
 
 ---
 
@@ -100,7 +100,7 @@ Access the app at `http://localhost:3000`
 
 ```bash
 # Clone the ML pipeline repository
-git clone https://github.com/IG05/testing.git
+git clone https://github.com/IG05/watchAI-backend-pipeline.git
 cd testing
 
 # Install Python dependencies
@@ -203,7 +203,7 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 - 📧 Email: [ishaangoyal0610@gmail.com](mailto:ishaangoyal0610@gmail.com)
 - 💼 LinkedIn: [ishaan-goyal10](https://www.linkedin.com/in/ishaan-goyal10/)
 - 🌐 Live Demo: [watchai-ten.vercel.app](https://watchai-ten.vercel.app/)
-- 🔧 Backend Repo: [IG05/testing](https://github.com/IG05/testing)
+- 🔧 Backend Repo: [IG05/testing](https://github.com/IG05/watchAI-backend-pipeline)
 
 ---
 
